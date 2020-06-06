@@ -1,23 +1,40 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import {
+	AppBar,
+	Toolbar,
+	Typography,
+	ListItem,
+	List,
+	Button,
+} from '@material-ui/core';
 
 const SavedList = ({ list }) => {
 	return (
-		<div className='saved-list'>
-			<h3>Saved Movies:</h3>
-			{list.map((movie, index) => (
-				<NavLink
-					key={index}
-					to={`/movies/${movie.id}`}
-					activeClassName='saved-active'
-				>
-					<span className='saved-movie'>{movie.title}</span>
-				</NavLink>
-			))}
+		<AppBar
+			position='sticky'
+			style={{ marginBottom: '50px', justifyContent: 'space-between' }}
+		>
+			<Toolbar>
+				<Typography component='h2'>Saved Movies:</Typography>
+				<List>
+					{list.map((movie, index) => (
+						<ListItem key={index}>
+							<NavLink
+								style={{ color: 'white' }}
+								to={`/movies/${movie.id}`}
+								activeClassName='saved-active'
+							>
+								<span className='saved-movie'>{movie.title}</span>
+							</NavLink>
+						</ListItem>
+					))}
+				</List>
+			</Toolbar>
 			<Link to='/'>
-				<div className='home-button'>Home</div>
+				<Button className='home-button'>Home</Button>
 			</Link>
-		</div>
+		</AppBar>
 	);
 };
 

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
+
+import { Container, AppBar, ToolBar } from '@material-ui/core';
+
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 import SavedList from './Movies/SavedList';
@@ -29,13 +32,15 @@ const App = () => {
 
 	return (
 		<div>
-			<SavedList list={savedList} />
-			<Route exact path='/'>
-				<MovieList movies={movieList} />
-			</Route>
-			<Route path='/movies/:id'>
-				<Movie addToSavedList={addToSavedList} savedList={savedList} />
-			</Route>
+			<Container maxWidth='lg'>
+				<SavedList list={savedList} />
+				<Route exact path='/'>
+					<MovieList movies={movieList} />
+				</Route>
+				<Route path='/movies/:id'>
+					<Movie addToSavedList={addToSavedList} savedList={savedList} />
+				</Route>
+			</Container>
 		</div>
 	);
 };
